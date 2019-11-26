@@ -1,0 +1,43 @@
+<ng-container>
+  <h2>Sale Online.</h2>
+  <form [formGroup]="form" (ngSubmit)="onSearch(form)">
+    <div class="p-col-10">
+      <div class="p-grid p-justify-center">
+        <div class="p-col-4">
+          <label >First Name : </label>&nbsp;
+          <input type="text" pInputText formControlName="firstName" />
+        </div>
+        <div class="p-col-4">
+          <label >Last Name : </label>&nbsp;
+          <input type="text" pInputText formControlName="lastName"/>
+        </div>
+      </div>
+      <br />
+      <div class="p-grid p-justify-center">
+        <div class="p-col-4">
+          <label >Email : </label>&nbsp;
+          <input type="text" pInputText  formControlName="email"/>
+        </div>
+        <div class="p-col-4">
+          <label >Product : </label>&nbsp;
+          <p-dropdown
+            [options]="productList"
+           formControlName="product" optionLabel="productName" [showClear]="true" placeholder="Select Product"
+          ></p-dropdown>
+        </div>
+      </div>
+      <br />
+      <div style="text-align: center;">
+        <p-button type="submit" label="ค้นหา"></p-button>&nbsp;
+        <p-button type="button" label="ยกเลิก"></p-button>
+      </div>
+      <div style="text-align: right;">
+        <p-button
+          icon="pi pi-plus-circle"
+          type="button"
+          label="เพิ่ม" [routerLink]="['/add']"
+        ></p-button>
+      </div>
+    </div>
+  </form>
+</ng-container>

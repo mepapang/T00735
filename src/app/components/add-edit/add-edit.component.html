@@ -1,0 +1,31 @@
+<ng-container>
+    <h2>Sale Online.</h2>
+    <form [formGroup]="formAdd" (ngSubmit)="onAdd(formAdd)"> <!-- -->
+        <div class="p-grid">
+            <div class="p-col-12">
+                <label>Order Date : </label>&nbsp;
+                <p-calendar formControlName="date" [showIcon]="true"></p-calendar>
+            </div>
+            <div class="p-col-12">
+                    <label>Product : </label>&nbsp;
+                    <p-dropdown [options]="productList" formControlName="product" optionLabel="productName" [showClear]="true" ></p-dropdown>&nbsp;
+                            <p-message *ngIf="formAdd.get('product').hasError('required')" severity="error" text="Product is required"></p-message>
+            </div>
+            <div class="p-col-12">
+                    <label>Customer : </label>&nbsp;
+                    <p-dropdown [options]="customerList" formControlName="customer" optionLabel="fullName" [showClear]="true" ></p-dropdown> &nbsp;
+                        <p-message *ngIf="formAdd.get('customer').hasError('required')" severity="error" text="Customer is required"></p-message>
+            </div>
+            <div class="p-col-12">
+                    <label>Amount : </label>&nbsp;
+                    <input type="text" pInputText formControlName="amount"/> &nbsp;
+                    <p-message *ngIf="formAdd.get('amount').hasError('required')" severity="error" text="Amount is required"></p-message>
+            </div>
+            <div class="p-col-12">
+                    <label>Total : </label>&nbsp;
+                    <input type="text" pInputText formControlName="total"/>
+            </div>
+        </div>
+    </form>    
+</ng-container>
+

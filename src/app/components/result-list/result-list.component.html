@@ -1,0 +1,31 @@
+<div class="p-grid p-align-center">
+    <div class="p-col-10">
+            <p-table [value]="productService.detailList">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>ชื่อ-นามสกุล</th>
+                            <th>ชื่อสินค้า</th>
+                            <th>รายละเอียดสินค้า</th>
+                            <th>อีเมล์</th>
+                            <th>เบอร์โทร</th>
+                            <th></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-detail>
+                        <tr>
+                            <td>{{detail.customer.fullName}}</td>
+                            <td>{{detail.product.productName}}</td>
+                            <td>{{detail.product.productDesc}}</td>
+                            <td>{{detail.customer.email}}</td>
+                            <td>{{detail.customer.tel}}</td>
+                            <td style="text-align: center;">
+                                    <p-button icon="pi pi-pencil" [routerLink]="['/edit']"></p-button>&nbsp;
+                                    <p-button icon="pi pi-trash"></p-button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <p-paginator [rows]="10" [totalRecords]="100"></p-paginator>
+                </p-table>
+                
+    </div>
+</div>
