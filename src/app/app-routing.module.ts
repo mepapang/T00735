@@ -10,12 +10,16 @@ const routes: Routes = [
   component: PageHomeComponent
 },
 {
-  path:'add',
+  path: 'add',
   component: AddEditComponent
 },
 {
-  path:'edit',
+  path: 'edit',
   component: AddEditComponent
+},
+{
+  path: '',
+  component: PageHomeComponent
 }
 
 ];

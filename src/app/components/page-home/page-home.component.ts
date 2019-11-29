@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { Detail } from 'src/app/models/detail';
+import { Orders } from 'src/app/models/orders';
 
 @Component({
   selector: 'app-page-home',
@@ -9,7 +9,7 @@ import { Detail } from 'src/app/models/detail';
 })
 export class PageHomeComponent implements OnInit {
 
-  detailList:Detail[];
+  detailList:[];
   constructor(private detailService: ProductService) { }
 
   ngOnInit() {

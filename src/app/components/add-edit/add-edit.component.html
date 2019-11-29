@@ -1,31 +1,67 @@
 <ng-container>
     <h2>Sale Online.</h2>
+    <p-toast [style]="{marginTop: '30px'}"></p-toast>
     <form [formGroup]="formAdd" (ngSubmit)="onAdd(formAdd)"> <!-- -->
         <div class="p-grid">
-            <div class="p-col-12">
+            <div class="p-col-6" style="text-align: right;">
                 <label>Order Date : </label>&nbsp;
-                <p-calendar formControlName="date" [showIcon]="true"></p-calendar>
             </div>
-            <div class="p-col-12">
+                <div class="p-col-6">
+                <p-calendar formControlName="orderDate" [showIcon]="true"></p-calendar>
+                </div>
+        </div>
+        <div class="p-grid">
+            <div class="p-col-6" style="text-align: right;">
                     <label>Product : </label>&nbsp;
-                    <p-dropdown [options]="productList" formControlName="product" optionLabel="productName" [showClear]="true" ></p-dropdown>&nbsp;
-                            <p-message *ngIf="formAdd.get('product').hasError('required')" severity="error" text="Product is required"></p-message>
             </div>
-            <div class="p-col-12">
+            <div class="p-col-6">
+                    <p-dropdown [options]="productList" formControlName="productId" optionLabel="productName" [showClear]="true" placeholder ="Select a Product"></p-dropdown>&nbsp;
+                            <p-message *ngIf="formAdd.get('productId').hasError('required')" severity="error" text="Product is required"></p-message>
+            </div>
+        </div>
+        <div class="p-grid">
+            <div class="p-col-6" style="text-align: right;">
                     <label>Customer : </label>&nbsp;
-                    <p-dropdown [options]="customerList" formControlName="customer" optionLabel="fullName" [showClear]="true" ></p-dropdown> &nbsp;
-                        <p-message *ngIf="formAdd.get('customer').hasError('required')" severity="error" text="Customer is required"></p-message>
             </div>
-            <div class="p-col-12">
+            <div class="p-col-6">
+                    <p-dropdown [options]="customerList" formControlName="customerId" optionLabel="fullName" [showClear]="true" placeholder ="Select a Customer" ></p-dropdown> &nbsp;
+                        <p-message *ngIf="formAdd.get('customerId').hasError('required')" severity="error" text="Customer is required"></p-message>
+            </div>
+        </div>
+        <div class="p-grid">
+            <div class="p-col-6" style="text-align: right;">
                     <label>Amount : </label>&nbsp;
+            </div>
+            <div class="p-col-6">
                     <input type="text" pInputText formControlName="amount"/> &nbsp;
                     <p-message *ngIf="formAdd.get('amount').hasError('required')" severity="error" text="Amount is required"></p-message>
             </div>
-            <div class="p-col-12">
+        </div>
+        <div class="p-grid">
+            <div class="p-col-6" style="text-align: right;">
                     <label>Total : </label>&nbsp;
-                    <input type="text" pInputText formControlName="total"/>
+            </div>
+            <div class="p-col-6">
+                    <input type="text" pInputText formControlName="total" [value]="formAdd.get('amount').value*formAdd.get('productId').value.price" disabled =true/>
+            </div>  
+        </div>
+        <div class="p-grid" *ngIf="formAdd.get('orderId').value">
+                <div class="p-col-6" style="text-align: right;">
+                        <label>Status : </label>&nbsp;
+                </div>
+                <div class="p-col-6">
+                        <p-inputSwitch formControlName="status"></p-inputSwitch>
+                </div>  
+            </div>
+        <br>
+        <div class="p-grid">
+            <div class="p-col" style="text-align: center;">
+                <p-button type="submit" label="บันทึก"></p-button> &nbsp;
+                <p-button type="button" label="ยกเลิก" (click)="onReset()"></p-button> &nbsp;
+                <p-button label="กลับ" [routerLink]="['/search']"></p-button> &nbsp;
             </div>
         </div>
-    </form>    
+        <!-- {{formAdd.getRawValue() | json}} -->
+    </form> 
 </ng-container>
 

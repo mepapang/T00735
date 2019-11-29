@@ -1,7 +1,7 @@
 <ng-container>
   <h2>Sale Online.</h2>
   <form [formGroup]="form" (ngSubmit)="onSearch(form)">
-    <div class="p-col-10">
+    <div class="p-col" style="text-align: center; margin: 25px 100px;">
       <div class="p-grid p-justify-center">
         <div class="p-col-4">
           <label >First Name : </label>&nbsp;
@@ -29,13 +29,13 @@
       <br />
       <div style="text-align: center;">
         <p-button type="submit" label="ค้นหา"></p-button>&nbsp;
-        <p-button type="button" label="ยกเลิก"></p-button>
+        <p-button type="button" label="ยกเลิก" (click)="onReset()"></p-button>
       </div>
       <div style="text-align: right;">
         <p-button
           icon="pi pi-plus-circle"
           type="button"
-          label="เพิ่ม" [routerLink]="['/add']"
+          label="เพิ่ม" (click)="gotoAdd()"
         ></p-button>
       </div>
     </div>

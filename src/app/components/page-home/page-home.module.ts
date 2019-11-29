@@ -11,7 +11,7 @@ import {PaginatorModule} from 'primeng/paginator';
 import {DropdownModule} from 'primeng/dropdown';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import { RouterModule } from '@angular/router';
     PaginatorModule, 
     DropdownModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    ToastModule
   ],
   exports: [PageHomeComponent]
 })

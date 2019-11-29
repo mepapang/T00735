@@ -2,7 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product';
-import { Detail } from 'src/app/models/detail';
+import { Orders } from 'src/app/models/orders';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -17,15 +18,15 @@ export class SearchComponent implements OnInit {
   productList: Product[] = [];
   product: Product[];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,private router: Router) { }
 
   ngOnInit() {
     this.form = new FormGroup({
       productId: new FormControl(''),
-      firstName: new FormControl('',Validators.required),
-      lastName: new FormControl('',Validators.required),
-      email: new FormControl('',Validators.required),
-      product : new FormControl('',[Validators.required])
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
+      email: new FormControl(''),
+      product : new FormControl('')
     });
 
     this.productService.getProduct().subscribe( list => {
@@ -37,7 +38,7 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch(form : FormGroup){
-    const data : Detail = {
+    const data = {
         firstName: form.value.firstName,
         lastName: form.value.lastName,
         productId: form.value.product.productId,
@@ -45,5 +46,22 @@ export class SearchComponent implements OnInit {
     }
     this.customer.emit(data);
   }
+
+  onReset(){
+    this.form.patchValue({
+      firstName: '',
+      lastName: '',
+      product: '',
+      email: ''
+    });
+    this.productService.detailList = [];
+  }
+
+  gotoAdd(){
+    this.productService.selectedCustomer = null;
+    this.router.navigate(['/add']);
+  }
+
+
 
 }

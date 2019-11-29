@@ -5,11 +5,13 @@ import { AddEditComponent } from './add-edit.component';
 import { ButtonModule } from "primeng/button";
 import {InputTextModule} from 'primeng/inputtext';
 import {DropdownModule} from 'primeng/dropdown';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {CalendarModule} from 'primeng/calendar';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {ToastModule} from 'primeng/toast';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 
 @NgModule({
@@ -25,7 +27,10 @@ import {MessageModule} from 'primeng/message';
     ReactiveFormsModule,
     RouterModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    FormsModule,
+    ToastModule,
+    InputSwitchModule
   ]
 })
 export class AddEditModule { }

@@ -8,6 +8,7 @@ import { PageHomeModule } from './components/page-home/page-home.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddEditModule } from './components/add-edit/add-edit.module';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { AddEditModule } from './components/add-edit/add-edit.module';
     BrowserAnimationsModule,
     AddEditModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
